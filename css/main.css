@@ -1798,7 +1798,34 @@ body {
   animation-play-state: paused !important;
 }
 
-/*# sourceMappingURL=main.css.map */
+/* Estilos para el botón de reproducción de audio */
+.audio-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.play-button {
+  background: rgba(255, 215, 0, 0.8);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background: rgba(255, 215, 0, 1);
+  transform: scale(1.05);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
 
 /* Reset de estilos básicos */
 body, h1, p {
