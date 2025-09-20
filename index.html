@@ -10,7 +10,7 @@
   </head>
   <body class="container">
     <div class="audio-control">
-      <button id="playAudio" class="play-button">🎵 Reproducir Música</button>
+      <button id="playAudio" class="play-button">▶️</button>
       <audio id="backgroundMusic" src="sound/Floricienta.mp3" loop></audio>
     </div>
     <div id="lyrics">
@@ -329,6 +329,56 @@
         </div>
       </div>
     </div>
+    <script>
+      // Funcionalidad del botón de reproducción de audio
+      document.addEventListener('DOMContentLoaded', function() {
+        const playButton = document.getElementById('playAudio');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let isPlaying = false;
+
+        // Precargar el audio
+        backgroundMusic.load();
+
+        playButton.addEventListener('click', function() {
+          if (isPlaying) {
+            backgroundMusic.pause();
+            playButton.textContent = '⏸️';
+            isPlaying = false;
+          } else {
+            // Intentar reproducir el audio
+            const playPromise = backgroundMusic.play();
+            
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                // Reproducción exitosa
+                playButton.textContent = '⏸️';
+                isPlaying = true;
+              }).catch(error => {
+                // Error en la reproducción
+                console.error('Error al reproducir audio:', error);
+                alert('No se pudo reproducir el audio. Por favor, haz clic nuevamente o verifica tu conexión.');
+                playButton.textContent = '🔇';
+              });
+            }
+          }
+        });
+
+        // Eventos del audio para mejor control
+        backgroundMusic.addEventListener('loadeddata', function() {
+          console.log('Audio cargado correctamente');
+        });
+
+        backgroundMusic.addEventListener('error', function(e) {
+          console.error('Error al cargar el audio:', e);
+          playButton.textContent = '❌';
+        });
+
+        backgroundMusic.addEventListener('ended', function() {
+          playButton.textContent = '▶️';
+          isPlaying = false;
+        });
+      });
+    </script>
     <script src="anim.js"></script>
     <script src="main.js"></script>
   </body>

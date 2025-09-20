@@ -1801,7 +1801,7 @@ body {
 /* Estilos para el botón de reproducción de audio */
 .audio-control {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   z-index: 1000;
 }
@@ -1809,22 +1809,23 @@ body {
 .play-button {
   background: rgba(255, 215, 0, 0.8);
   border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 14px;
+  padding: 12px 12px;
+  border-radius: 50%;
   cursor: pointer;
-  color: #000;
-  font-weight: bold;
+  font-size: 20px;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .play-button:hover {
   background: rgba(255, 215, 0, 1);
-  transform: scale(1.05);
-}
-
-.play-button:active {
-  transform: scale(0.95);
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Reset de estilos básicos */
